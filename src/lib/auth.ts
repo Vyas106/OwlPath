@@ -1,89 +1,98 @@
-    import { cookies } from "next/headers"
-    import { prisma } from "./prisma"
-    import bcrypt from "bcryptjs"
-    import jwt from "jsonwebtoken"
+import { cookies } from "next/headers"
+import { prisma } from "./prisma"
+import bcrypt from "bcryptjs"
+import jwt from "jsonwebtoken"
 
-    const JWT_SECRET = process.env.JWT_SECRET || "your-secret-key"
+const JWT_SECRET = process.env.JWT_SECRET || "your-secret-key"
 
-    export interface User {
-      id: string
-      email: string
-      username: string
-      name?: string
-      avatar?: string
-      reputation: number
-      isAdmin: boolean
-    }
+export interface User {
+  id: string
+  email: string
+  username: string
+  name?: string
+  avatar?: string
+  reputation: number
+  isAdmin: boolean
+}
 
-    export async function hashPassword(password: string): Promise<string> {
-      return bcrypt.hash(password, 12)
-    }
+export async function hashPassword(password: string): Promise<string> {
+  return bcrypt.hash(password, 12)
+}
 
-    export async function verifyPassword(password: string, hashedPassword: string): Promise<boolean> {
-      return bcrypt.compare(password, hashedPassword)
-    }
+export async function verifyPassword(password: string, hashedPassword: string): Promise<boolean> {
+  return bcrypt.compare(password, hashedPassword)
+}
 
-    export function generateToken(user: User): string {
-      return jwt.sign(
-        {
-          id: user.id,
-          email: user.email,
-          username: user.username,
-          isAdmin: user.isAdmin,
-        },
-        JWT_SECRET,
-        { expiresIn: "7d" },
-      )
-    }
+export function generateToken(user: User): string {
+  return jwt.sign(
+    {
+      id: user.id,
+      email: user.email,
+      username: user.username,
+      isAdmin: user.isAdmin,
+    },
+    JWT_SECRET,
+    { expiresIn: "7d" },
+  )
+}
 
-    export function verifyToken(token: string): any {
-      try {
-        return jwt.verify(token, JWT_SECRET)
-      } catch {
-        return null
-      }
-    }
+export function verifyToken(token: string): any {
+  try {
+    return jwt.verify(token, JWT_SECRET)
+  } catch {
+    return null
+  }
+}
 
-    export async function getCurrentUser(): Promise<User | null> {
-      try {
-        const cookieStore = cookies()
-        const token = (await cookieStore).get("auth-token")?.value
+export async function getCurrentUser(): Promise<User | null> {
+  try {
+    const cookieStore = cookies()
+    const token = (await cookieStore).get("auth-token")?.value
 
-        if (!token) return null
+    if (!token) return null
 
-        const payload = verifyToken(token)
-        if (!payload) return null
+    const payload = verifyToken(token)
+    if (!payload) return null
 
-        const user = await prisma.user.findUnique({
-          where: { id: payload.id },
-          select: {
-            id: true,
-            email: true,
-            username: true,
-            name: true,
-            avatar: true,
-            reputation: true,
-            isAdmin: true,
-          },
-        })
+    const user = await prisma.user.findUnique({
+      where: { id: payload.id },
+      select: {
+        id: true,
+        email: true,
+        username: true,
+        name: true,
+        avatar: true,
+        reputation: true,
+        isAdmin: true,
+      },
+    })
 
-        return user
-      } catch {
-        return null
-      }
-    }
+    return user
+  } catch {
+    return null
+  }
+}
 
-    export function setAuthCookie(token: string) {
-      const cookieStore = cookies()
-      cookieStore.set("auth-token", token, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
-        maxAge: 60 * 60 * 24 * 7, // 7 days
-      })
-    }
+export function setAuthCookie(token: string) {
+  const cookieStore = cookies()
+  cookieStore.set("auth-token", token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    maxAge: 60 * 60 * 24 * 7, // 7 days
+  })
+}
 
-    export function clearAuthCookie() {
-      const cookieStore = cookies()
-      cookieStore.delete("auth-token")
-    }
+export function clearAuthCookie() {
+  const cookieStore = cookies()
+  cookieStore.delete("auth-token")
+}
+
+// Export authOptions for compatibility with existing API routes
+export const authOptions = {
+  // This is a compatibility export for routes expecting NextAuth.js
+  // You may need to adjust this based on your specific needs
+  getCurrentUser,
+  verifyToken,
+  JWT_SECRET,
+}
