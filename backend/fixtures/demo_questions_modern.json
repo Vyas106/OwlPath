@@ -1,0 +1,120 @@
+[
+  {
+    "model": "questions.question",
+    "pk": 20,
+    "fields": {
+      "title": "How to implement real-time chat with WebSockets in Django?",
+      "body": "I'm building a real-time chat feature for my Django application and need to implement WebSocket connections.\n\nMy current setup:\n- Django REST API for regular endpoints\n- React frontend\n- Need bidirectional real-time communication\n\nI've heard about Django Channels but I'm not sure about:\n1. How to integrate Channels with existing Django project\n2. Authentication with WebSockets\n3. Scaling considerations for production\n4. Message persistence and history\n\nAny recommendations for tutorials or best practices?",
+      "author": 1,
+      "created_at": "2024-12-10T14:30:00Z",
+      "updated_at": "2024-12-10T14:30:00Z",
+      "views": 156,
+      "difficulty_level": "intermediate",
+      "quality_score": 8.5,
+      "is_answered": false,
+      "is_featured": false,
+      "is_pinned": false,
+      "bounty_amount": 75,
+      "bounty_expires_at": "2024-12-24T14:30:00Z",
+      "last_activity_at": "2024-12-10T14:30:00Z"
+    }
+  },
+  {
+    "model": "questions.question",
+    "pk": 21,
+    "fields": {
+      "title": "AI Code Generation Tools: GitHub Copilot vs ChatGPT vs Local Models",
+      "body": "I'm evaluating different AI coding assistants for our development team and would love to hear experiences from the community.\n\n**Currently considering:**\n- GitHub Copilot (integrated in IDE)\n- ChatGPT Plus for coding tasks\n- Local models like CodeLlama\n- Claude for code review\n\n**Key factors:**\n- Code quality and accuracy\n- Privacy and security (we handle sensitive data)\n- Integration with development workflow\n- Cost for team of 10 developers\n- Language support (Python, JavaScript, Go)\n\n**Questions:**\n1. Which tool provides the most accurate code suggestions?\n2. How do you handle code review for AI-generated code?\n3. Any security concerns with cloud-based AI tools?\n4. Worth setting up local AI models vs cloud services?\n\nLooking for real-world experiences and recommendations!",
+      "author": 2,
+      "created_at": "2024-12-09T09:15:00Z",
+      "updated_at": "2024-12-09T09:15:00Z",
+      "views": 203,
+      "difficulty_level": "intermediate",
+      "quality_score": 9.2,
+      "is_answered": true,
+      "is_featured": true,
+      "is_pinned": false,
+      "bounty_amount": 0,
+      "last_activity_at": "2024-12-09T16:45:00Z"
+    }
+  },
+  {
+    "model": "questions.question",
+    "pk": 22,
+    "fields": {
+      "title": "Microservices vs Monolith: When to make the switch?",
+      "body": "Our startup has been growing rapidly and our Django monolith is starting to show stress signs:\n\n**Current Issues:**\n- Deployment bottlenecks (whole app deploys for small changes)\n- Database locks during high traffic\n- Hard to scale individual features\n- Team coordination issues (15+ developers)\n\n**Considering microservices but concerned about:**\n- Increased complexity in local development\n- Service discovery and communication overhead\n- Data consistency across services\n- Monitoring and debugging distributed systems\n- DevOps infrastructure requirements\n\n**Our stack:**\n- Django + PostgreSQL + Redis\n- React frontend\n- AWS infrastructure\n- CI/CD with GitHub Actions\n\n**Questions:**\n1. What are clear signals it's time to break up a monolith?\n2. Which services should be extracted first?\n3. How to handle shared data and transactions?\n4. Tools for managing microservices communication?\n5. Migration strategy to minimize downtime?\n\nAny horror stories or success stories would be helpful!",
+      "author": 3,
+      "created_at": "2024-12-08T11:22:00Z",
+      "updated_at": "2024-12-08T11:22:00Z",
+      "views": 298,
+      "difficulty_level": "advanced",
+      "quality_score": 9.1,
+      "is_answered": false,
+      "is_featured": false,
+      "is_pinned": true,
+      "bounty_amount": 150,
+      "bounty_expires_at": "2024-12-22T11:22:00Z",
+      "last_activity_at": "2024-12-08T15:33:00Z"
+    }
+  },
+  {
+    "model": "questions.question",
+    "pk": 23,
+    "fields": {
+      "title": "Optimizing React app bundle size - practical strategies?",
+      "body": "My React application bundle has grown to 3.2MB and it's affecting load times, especially on mobile.\n\n**Current bundle analysis:**\n```\n- React + React DOM: 42.2KB\n- Material-UI: 1.1MB (largest chunk)\n- Lodash: 528KB\n- Chart.js + react-chartjs-2: 245KB\n- Various other dependencies: 1.3MB\n```\n\n**Already tried:**\n- Code splitting with React.lazy()\n- Tree shaking enabled in webpack\n- Production build with optimization\n\n**Need help with:**\n1. Material-UI bundle size - should I switch to lighter alternatives?\n2. Lodash tree shaking - how to import only used functions?\n3. Dynamic imports for chart components\n4. Bundle analyzer recommendations\n5. Service worker caching strategies\n\n**Target:** Get bundle under 1MB without losing functionality\n\nWhat tools and techniques have worked best for you?",
+      "author": 4,
+      "created_at": "2024-12-07T16:45:00Z",
+      "updated_at": "2024-12-07T16:45:00Z",
+      "views": 187,
+      "difficulty_level": "intermediate",
+      "quality_score": 8.3,
+      "is_answered": true,
+      "is_featured": false,
+      "is_pinned": false,
+      "bounty_amount": 0,
+      "last_activity_at": "2024-12-07T20:12:00Z"
+    }
+  },
+  {
+    "model": "questions.question",
+    "pk": 24,
+    "fields": {
+      "title": "TypeScript strict mode - worth the migration pain?",
+      "body": "Our team is debating whether to enable TypeScript strict mode on our existing codebase (~50k lines).\n\n**Current setup:**\n- TypeScript with basic type checking\n- ~200 `@ts-ignore` comments\n- Mix of `any` types throughout\n- No strict null checks\n\n**Strict mode would catch:**\n- Implicit any types\n- Null/undefined issues\n- Unused parameters\n- Missing return types\n\n**Concerns:**\n- Massive time investment to fix all errors\n- Productivity hit during migration\n- Resistance from team members\n- Third-party library compatibility\n\n**Questions:**\n1. How long did strict mode migration take for your team?\n2. Was the bug reduction worth the effort?\n3. Best incremental approach to enable strict mode?\n4. How to handle legacy code vs new development?\n5. Tools to automate some of the migration?\n\nLooking for real experiences with large codebases!",
+      "author": 1,
+      "created_at": "2024-12-06T13:18:00Z",
+      "updated_at": "2024-12-06T13:18:00Z",
+      "views": 234,
+      "difficulty_level": "intermediate",
+      "quality_score": 8.7,
+      "is_answered": false,
+      "is_featured": false,
+      "is_pinned": false,
+      "bounty_amount": 25,
+      "bounty_expires_at": "2024-12-20T13:18:00Z",
+      "last_activity_at": "2024-12-06T17:22:00Z"
+    }
+  },
+  {
+    "model": "questions.question",
+    "pk": 25,
+    "fields": {
+      "title": "Kubernetes vs Docker Swarm for small team deployment?",
+      "body": "We're a small team (5 developers) looking to containerize our applications for production deployment.\n\n**Current setup:**\n- 3 microservices (Django APIs)\n- 1 React frontend\n- PostgreSQL + Redis\n- Single VPS currently running everything\n\n**Requirements:**\n- Easy local development setup\n- Rolling deployments with zero downtime\n- Auto-scaling based on load\n- Service discovery\n- Load balancing\n- Monitoring and logging\n\n**Considering:**\n\n**Kubernetes:**\n✅ Industry standard, lots of resources\n✅ Powerful features and ecosystem\n❌ Complex learning curve\n❌ Might be overkill for our size\n\n**Docker Swarm:**\n✅ Simpler to learn and manage\n✅ Built into Docker\n❌ Less community support\n❌ Fewer advanced features\n\n**Questions:**\n1. Is Kubernetes worth the complexity for a small team?\n2. How long to become productive with each platform?\n3. Managed services (EKS, GKE) vs self-hosted?\n4. Development workflow differences?\n5. Migration path if we outgrow our choice?\n\nWhat would you recommend for our scale?",
+      "author": 2,
+      "created_at": "2024-12-05T10:30:00Z",
+      "updated_at": "2024-12-05T10:30:00Z",
+      "views": 145,
+      "difficulty_level": "intermediate",
+      "quality_score": 8.9,
+      "is_answered": false,
+      "is_featured": false,
+      "is_pinned": false,
+      "bounty_amount": 50,
+      "bounty_expires_at": "2024-12-19T10:30:00Z",
+      "last_activity_at": "2024-12-05T14:15:00Z"
+    }
+  }
+]
