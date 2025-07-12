@@ -47,7 +47,7 @@
     export async function getCurrentUser(): Promise<User | null> {
       try {
         const cookieStore = cookies()
-        const token = cookieStore.get("auth-token")?.value
+        const token = (await cookieStore).get("auth-token")?.value
 
         if (!token) return null
 
@@ -75,7 +75,7 @@
 
     export function setAuthCookie(token: string) {
       const cookieStore = cookies()
-      cookieStore.set("auth-token", token, {
+      ;(await cookieStore).set("auth-token", token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
         sameSite: "lax",
