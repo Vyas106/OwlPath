@@ -75,7 +75,7 @@
 
     export function setAuthCookie(token: string) {
       const cookieStore = cookies()
-      ;(await cookieStore).set("auth-token", token, {
+      cookieStore.set("auth-token", token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
         sameSite: "lax",
