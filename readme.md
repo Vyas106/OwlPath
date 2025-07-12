@@ -18,14 +18,8 @@ StackIt is a minimal question-and-answer platform that supports collaborative le
 - **Tagging**: Organize questions with relevant tags
 - **Notifications**: Bell icon with dropdown for answer notifications, comments, and mentions
 
-## Installation
-1. Clone the repository
-2. Copy modules to Odoo addons folder
-3. Update apps list in Odoo
-4. Install the StackIt module
 
-## Usage
-After installation, navigate to the StackIt module in Odoo to start using the Q&A platform.
+
 
 ## Team Members
 - **Isha Rathore** - isharathore707@gmail.com | 8619106191
