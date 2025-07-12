@@ -183,47 +183,7 @@ export default function HomePage() {
         />
       </section>
 
-      {/* Stats Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-4 gap-8"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {[
-              { icon: MessageSquare, value: "10K+", label: "Questions Asked", color: "blue" },
-              { icon: Users, value: "5K+", label: "Active Users", color: "green" },
-              { icon: Award, value: "25K+", label: "Answers Given", color: "yellow" },
-              { icon: TrendingUp, value: "95%", label: "Questions Resolved", color: "purple" },
-            ].map((stat, index) => (
-              <motion.div key={index} variants={itemVariants} className="text-center group">
-                <motion.div
-                  className={`flex justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <div className={`w-16 h-16 bg-${stat.color}-100 rounded-2xl flex items-center justify-center`}>
-                    <stat.icon className={`w-8 h-8 text-${stat.color}-600`} />
-                  </div>
-                </motion.div>
-                <motion.div
-                  className="text-4xl font-bold text-gray-900 mb-2"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ delay: index * 0.1 + 0.5, type: "spring" }}
-                >
-                  {stat.value}
-                </motion.div>
-                <div className="text-gray-600 font-medium">{stat.label}</div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
+     
       {/* How It Works */}
       <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
