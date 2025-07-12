@@ -1,0 +1,203 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  username  String   @unique
+  name      String?
+  password  String
+  avatar    String?
+  bio       String?
+  reputation Int     @default(0)
+  isAdmin   Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  questions     Question[]
+  answers       Answer[]
+  questionVotes QuestionVote[]
+  answerVotes   AnswerVote[]
+  notifications Notification[]
+  
+  // User following system
+  following     UserFollow[] @relation("UserFollowing")
+  followers     UserFollow[] @relation("UserFollowers")
+  
+  // Tag following system
+  followingTags TagFollow[]
+
+  @@map("users")
+}
+
+model Question {
+  id          String   @id @default(cuid())
+  title       String
+  content     String
+  slug        String   @unique
+  views       Int      @default(0)
+  voteCount   Int      @default(0)
+  isResolved  Boolean  @default(false)
+  acceptedAnswerId String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  authorId String
+  author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  answers       Answer[]
+  tags          QuestionTag[]
+  votes         QuestionVote[]
+  notifications Notification[]
+
+  @@map("questions")
+}
+
+model Answer {
+  id        String   @id @default(cuid())
+  content   String
+  voteCount Int      @default(0)
+  isAccepted Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  questionId String
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  authorId String
+  author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  // Reply system
+  parentId String?
+  parent   Answer? @relation("AnswerReplies", fields: [parentId], references: [id], onDelete: Cascade)
+  replies  Answer[] @relation("AnswerReplies")
+
+  votes         AnswerVote[]
+  notifications Notification[]
+
+  @@map("answers")
+}
+
+model Tag {
+  id          String @id @default(cuid())
+  name        String @unique
+  description String?
+  color       String @default("#3b82f6")
+
+  questions QuestionTag[]
+  followers TagFollow[]
+
+  @@map("tags")
+}
+
+model QuestionTag {
+  questionId String
+  tagId      String
+
+  question Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  tag      Tag      @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([questionId, tagId])
+  @@map("question_tags")
+}
+
+model QuestionVote {
+  id     String    @id @default(cuid())
+  type   VoteType
+  userId String
+  questionId String
+
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  question Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, questionId])
+  @@map("question_votes")
+}
+
+model AnswerVote {
+  id       String   @id @default(cuid())
+  type     VoteType
+  userId   String
+  answerId String
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  answer Answer @relation(fields: [answerId], references: [id], onDelete: Cascade)
+
+
+  @@unique([userId, answerId])
+  @@map("answer_votes")
+}
+
+model UserFollow {
+  id          String @id @default(cuid())
+  followerId  String
+  followingId String
+  createdAt   DateTime @default(now())
+
+  follower  User @relation("UserFollowing", fields: [followerId], references: [id], onDelete: Cascade)
+  following User @relation("UserFollowers", fields: [followingId], references: [id], onDelete: Cascade)
+
+  @@unique([followerId, followingId])
+  @@map("user_follows")
+}
+
+model TagFollow {
+  id        String @id @default(cuid())
+  userId    String
+  tagId     String
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tag  Tag  @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, tagId])
+  @@map("tag_follows")
+}
+
+model Notification {
+  id        String           @id @default(cuid())
+  type      NotificationType
+  title     String
+  message   String
+  isRead    Boolean          @default(false)
+  createdAt DateTime         @default(now())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  questionId String?
+  question   Question? @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  answerId String?
+  answer   Answer? @relation(fields: [answerId], references: [id], onDelete: Cascade)
+
+  @@map("notifications")
+}
+
+enum VoteType {
+  UP
+  DOWN
+}
+
+enum NotificationType {
+  QUESTION_ANSWERED
+  ANSWER_ACCEPTED
+  QUESTION_VOTED
+  ANSWER_VOTED
+  MENTION
+  USER_FOLLOWED
+  NEW_QUESTION_FROM_FOLLOWED_USER
+  NEW_QUESTION_IN_FOLLOWED_TAG
+}
