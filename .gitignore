@@ -1,0 +1,482 @@
+# OwlPath - Django Q&A Platform .gitignore
+
+# =============================================================================
+# Python
+# =============================================================================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+*.pot
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
+#   However, in case of collaboration, if having platform-specific dependencies or dependencies
+#   having no cross-platform support, pipenv may install dependencies that don't work, or not
+#   install all needed dependencies.
+#Pipfile.lock
+
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# =============================================================================
+# Django
+# =============================================================================
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Django migrations (uncomment if you want to ignore migrations)
+# */migrations/
+
+# Django static files
+/static/
+/staticfiles/
+/media/
+
+# Django secret key and settings
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Django collected static files
+/staticfiles/
+/static_root/
+
+# =============================================================================
+# Database
+# =============================================================================
+
+# SQLite
+*.sqlite3
+*.sqlite3-journal
+*.db
+
+# PostgreSQL
+*.sql
+*.dump
+
+# MySQL
+*.mysql
+
+# =============================================================================
+# Web Development
+# =============================================================================
+
+# Node.js (if using for frontend build tools)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
+.grunt
+
+# Bower dependency directory (https://bower.io/)
+bower_components
+
+# node-waf configuration
+.lock-wscript
+
+# Compiled binary addons (https://nodejs.org/api/addons.html)
+build/Release
+
+# Dependency directories
+jspm_packages/
+
+# TypeScript v1 declaration files
+typings/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# Next.js build output
+.next
+
+# Nuxt.js build / generate output
+.nuxt
+dist
+
+# Gatsby files
+.cache/
+public
+
+# Storybook build outputs
+.out
+.storybook-out
+
+# Temporary folders
+tmp/
+temp/
+
+# =============================================================================
+# IDE & Editor Files
+# =============================================================================
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Atom
+.atom/
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# =============================================================================
+# Operating System Files
+# =============================================================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+
+# =============================================================================
+# Application-Specific Files
+# =============================================================================
+
+# OwlPath specific files
+# Media files (user uploads)
+/backend/media/
+/backend/staticfiles/
+
+# Logs
+/backend/logs/
+/backend/*.log
+/backend/django.log
+
+# Backup files
+*.backup
+*.bak
+
+# Cache files
+/backend/cache/
+
+# Local configuration files
+/backend/local_settings.py
+/backend/production_settings.py
+
+# SSL certificates
+*.pem
+*.key
+*.crt
+
+# =============================================================================
+# Security & Sensitive Files
+# =============================================================================
+
+# Environment variables and secrets
+.env*
+!.env.example
+secrets.json
+config.json
+
+# SSH keys
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+*.pub
+
+# AWS credentials
+.aws/
+
+# =============================================================================
+# Build & Deployment
+# =============================================================================
+
+# Docker
+.dockerignore
+
+# Deployment scripts (if they contain sensitive data)
+deploy.sh
+deploy.bat
+
+# Build artifacts
+build/
+dist/
+
+# =============================================================================
+# Development Tools
+# =============================================================================
+
+# Linting
+.pylint.d/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Documentation build
+docs/_build/
+
+# Profiling
+*.prof
+
+# =============================================================================
+# Project-Specific Exclusions
+# =============================================================================
+
+# Exclude demo data that might contain sensitive info
+# (Keep the fixture files but exclude any generated test data)
+/backend/test_data/
+
+# Exclude any custom configuration files
+custom_settings.py
+
+# Virtual environment (should be excluded)
+/backend/venv/
+/backend/env/
+
+# Exclude any generated migration files during development
+# (Uncomment if you want to ignore migrations completely)
+# /backend/*/migrations/0*.py
+
+# Exclude any temporary files created during development
+temp/
+tmp/
+
+# =============================================================================
+# Keep These Files (using negation)
+# =============================================================================
+
+# Keep important configuration examples
+!.env.example
+!docker-compose.example.yml
+!settings.example.py
+
+# Keep fixture files for demo data
+!/backend/fixtures/
+!/backend/fixtures/*.json
+
+# Keep static assets that are part of the repository
+!/backend/static/admin/
+!/backend/static/css/
+!/backend/static/js/
+!/backend/static/images/
+
+# Keep documentation
+!README.md
+!CONTRIBUTING.md
+!LICENSE
+!CHANGELOG.md
