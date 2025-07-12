@@ -32,6 +32,3 @@ After installation, navigate to the StackIt module in Odoo to start using the Q&
 - **Vishal Vyas** - vishalvyas.developer@gmail.com | 9274043301
 - **Jay Chhaniyara** - jaython.dev@gmail.com | 9023227593
 - **YashRaj Upadhyay** - uyashraj8@gmail.com | 9537805539
-
-## Mock-up
-View the design mock-up: https://link.excalidraw.com/l/65VNwvy7c4X/9mhEahV0MQg
