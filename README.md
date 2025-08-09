@@ -24,5 +24,4 @@ StackIt is a minimal question-and-answer platform that supports collaborative le
 ## Team Members
 - **Isha Rathore** - isharathore707@gmail.com | 8619106191
 - **Vishal Vyas** - vishalvyas.developer@gmail.com | 9274043301
-- **Jay Chhaniyara** - jaython.dev@gmail.com | 9023227593
-- **YashRaj Upadhyay** - uyashraj8@gmail.com | 9537805539
+
